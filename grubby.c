@@ -3490,20 +3490,20 @@ int main(int argc, const char ** argv) {
     }
 
     if (!cfi) {
-      #ifdef __ia64__
-	cfi = &eliloConfigType;
-      #elif __powerpc__
-	cfi = &yabootConfigType;
-      #elif __sparc__
-        cfi = &siloConfigType;
-      #elif __s390__
-        cfi = &ziplConfigType;
-      #elif __s390x__
-        cfi = &ziplConfigtype;
-      #else
         if (grub2FindConfig(&grub2ConfigType))
 	    cfi = &grub2ConfigType;
 	else
+      #ifdef __ia64__
+	    cfi = &eliloConfigType;
+      #elif __powerpc__
+	    cfi = &yabootConfigType;
+      #elif __sparc__
+            cfi = &siloConfigType;
+      #elif __s390__
+            cfi = &ziplConfigType;
+      #elif __s390x__
+            cfi = &ziplConfigtype;
+      #else
 	    cfi = &grubConfigType;
       #endif
     }
